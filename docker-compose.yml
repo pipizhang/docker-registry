@@ -16,6 +16,9 @@ services:
   registry-web:
     image: hyper/docker-registry-web
     restart: always
+    environment:
+      - REGISTRY_NAME=${REGISTRY_NAME}
+      - REGISTRY_BASIC_AUTH=${REGISTRY_BASIC_AUTH}
     ports:
       - "8080:8080"
     volumes:

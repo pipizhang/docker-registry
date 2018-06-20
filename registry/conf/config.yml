@@ -18,3 +18,8 @@ health:
     enabled: true
     interval: 10s
     threshold: 3
+auth:
+  htpasswd:
+    realm: basic-realm
+    path: /etc/docker/registry/htpasswd
+
