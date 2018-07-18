@@ -29,6 +29,17 @@ By default, the stack exposes the following ports:
 * 5000: Registry service.
 * 8080: Registry web ui.
 
+### Nginx proxy tips
+1. "413 Request Entity Too Large" error
+```
+client_max_body_size 0;
+```
+2. "blob upload unknown" error
+```
+proxy_set_header X-Forwarded-Proto $scheme;
+```
+
+
 License
 -------
 Copyright (c) 2018-present Peter Zhang. Released under the MIT License. See
