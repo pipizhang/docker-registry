@@ -2,3 +2,4 @@ Dockerfile.tmp
 *.sw?
 htpasswd
 .env
+registry-manager/registries.yml

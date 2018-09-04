@@ -13,21 +13,21 @@ services:
     networks:
       - registry-net
 
-  registry-web:
-    image: hyper/docker-registry-web
+  registry-manager:
+    image: snagles/docker-registry-manager
     restart: always
     environment:
-      - REGISTRY_NAME=${REGISTRY_NAME}
-      - REGISTRY_BASIC_AUTH=${REGISTRY_BASIC_AUTH}
+      - MANAGER_PORT=8080
+      - MANAGER_REGISTRIES=/app/registries.yml
+      - MANAGER_LOG_LEVEL=warn
     ports:
       - "8080:8080"
-    volumes:
-      - "./registry-web/conf:/conf:ro"
-      - "./registry-web/data:/data:rw"
     networks:
       - registry-net
     depends_on:
       - registry
+    volumes:
+      - ./registry-manager/registries.yml:/app/registries.yml
 
 networks:
   registry-net:
